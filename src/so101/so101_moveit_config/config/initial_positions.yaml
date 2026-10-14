@@ -1,0 +1,9 @@
+# Default initial positions for so101_new_calib's ros2_control fake system
+
+initial_positions:
+  _1: 0
+  _2: 0
+  _3: 0
+  _4: 0
+  _5: 0
+  _6: 0

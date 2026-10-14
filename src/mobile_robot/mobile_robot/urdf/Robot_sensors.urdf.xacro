@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+
+<gazebo reference="l_camera_link001">
+	<sensor type="camera" name="camera">
+		<camera>
+			<horizontal_fov>1.047</horizontal_fov>
+			<image>
+				<width>320</width>
+				<height>240</height>
+			</image>
+			<clip>
+				<near>0.1</near>
+				<far>100.0</far>
+			</clip>
+			<save enabled="false">
+				<path>/tmp/camera_data</path>
+			</save>
+			<triggered>false</triggered>
+			<trigger_topic>camera/trigger</trigger_topic>
+		</camera>
+		<always_on>true</always_on>
+		<update_rate>30.0</update_rate>
+		<visualize>true</visualize>
+		<topic>camera</topic>
+		<enable_metrics>true</enable_metrics>
+	</sensor>
+</gazebo>
+
+<gazebo reference="l_lidar_link001">
+	<sensor type="gpu_lidar" name="lidar">
+		<topic>lidar</topic>
+		<update_rate>10.0</update_rate>
+		<lidar>
+			<scan>
+				<horizontal>
+					<samples>640</samples>
+					<resolution>1.0</resolution>
+					<min_angle>-1.396263</min_angle>
+					<max_angle>1.396263</max_angle>
+				</horizontal>
+				<vertical>
+					<samples>16</samples>
+					<resolution>1.0</resolution>
+					<min_angle>-0.261799</min_angle>
+					<max_angle>0.261799</max_angle>
+				</vertical>
+			</scan>
+			<range>
+				<min>0.08</min>
+				<max>10.0</max>
+				<resolution>0.01</resolution>
+			</range>
+		</lidar>
+		<always_on>true</always_on>
+		<visualize>true</visualize>
+	</sensor>
+</gazebo>
+
+</robot>

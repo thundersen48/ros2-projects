@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- Объявляем аргумент, который принимает description.launch.py -->
+  <xacro:arg name="use_ros2_control" default="false"/>
+
+  <!-- Подключаем настройки ros2_control и плагин симуляции только если флаг true -->
+  <xacro:if value="$(arg use_ros2_control)">
+    
+    <ros2_control name="GazeboSimSystem" type="system">
+      <hardware>
+        <plugin>gz_ros2_control/GazeboSimSystem</plugin>
+      </hardware>
+      
+      <joint name="_1">
+        <command_interface name="position">
+          <param name="min">-1.91986</param>
+          <param name="max">1.91986</param>
+        </command_interface>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+      </joint>
+      
+      <joint name="_2">
+        <command_interface name="position">
+          <param name="min">-1.74533</param>
+          <param name="max">1.74533</param>
+        </command_interface>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+      </joint>
+      
+      <joint name="_3">
+        <command_interface name="position">
+          <param name="min">-1.74533</param>
+          <param name="max">1.5708</param>
+        </command_interface>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+      </joint>
+      
+      <joint name="_4">
+        <command_interface name="position">
+          <param name="min">-1.65806</param>
+          <param name="max">1.65806</param>
+        </command_interface>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+      </joint>
+      
+      <joint name="_5">
+        <command_interface name="position">
+          <param name="min">-2.79253</param>
+          <param name="max">2.79253</param>
+        </command_interface>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+      </joint>
+      
+      <joint name="_6">
+        <command_interface name="position">
+          <param name="min">-0.174533</param>
+          <param name="max">1.74533</param>
+        </command_interface>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+      </joint>
+    </ros2_control>
+
+    <!-- Подключение плагина Gazebo Harmonic для ros2_control -->
+    <gazebo>
+      <plugin filename="libgz_ros2_control-system.so" name="gz_ros2_control::GazeboSimSystem">
+        <parameters>$(find so101)/config/so101_new_calib_controllers.yaml</parameters>
+      </plugin>
+    </gazebo>
+
+  </xacro:if>
+
+</robot>

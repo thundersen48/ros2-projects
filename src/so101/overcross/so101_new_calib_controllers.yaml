@@ -1,0 +1,46 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 250
+    joint_trajectory_controller001:
+      type: joint_trajectory_controller/JointTrajectoryController
+    joint_state_broadcaster002:
+      type: joint_state_broadcaster/JointStateBroadcaster
+joint_trajectory_controller001:
+  ros__parameters:
+    action_monitor_rate: 20.0
+    allow_integration_in_goal_trajectories: false
+    allow_nonzero_velocity_at_trajectory_end: false
+    allow_partial_joints_goal: false
+    cmd_timeout: 0.0
+    command_interfaces:
+    - position
+    constraints.goal_time: 0.0
+    constraints.stopped_velocity_tolerance: 0.01
+    interpolate_from_desired_state: false
+    interpolation_method: splines
+    joints:
+    - _6
+    - _1
+    - _5
+    - _4
+    - _3
+    - _2
+    open_loop_control: false
+    set_last_command_interface_value_as_state_on_activation: true
+    state_interfaces:
+    - position
+    - velocity
+joint_state_broadcaster002:
+  ros__parameters:
+    joints:
+    - _4
+    - _6
+    - _5
+    - _3
+    - _2
+    - _1
+    map_interface_to_joint_state.effort: effort
+    map_interface_to_joint_state.position: position
+    map_interface_to_joint_state.velocity: velocity
+    use_local_topics: false
+    use_urdf_to_filter: true
